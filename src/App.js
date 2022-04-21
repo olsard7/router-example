@@ -4,6 +4,7 @@ import { useAuth } from "./useAuth";
 import Layout from "./Layout";
 import AuthProvider from "./AuthProvider";
 import { PublicPage, ProtectedPage, LoginPage, Description } from "./pages";
+import "./style.css";
 
 export default function App() {
   return (
