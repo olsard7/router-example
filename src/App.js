@@ -1,4 +1,6 @@
 import * as React from "react";
+import { Provider } from "react-redux";
+import store from "./redux/store";
 import { Routes, Route, useLocation, Navigate } from "react-router-dom";
 import { useAuth } from "./useAuth";
 import Layout from "./Layout";
@@ -15,33 +17,35 @@ import "./style.css";
 
 export default function App() {
   return (
-    <AuthProvider>
-      <Description />
+    <Provider store={store}>
+      <AuthProvider>
+        <Description />
 
-      <Routes>
-        <Route element={<Layout />}>
-          <Route path="/" element={<PublicPage />} />
-          <Route path="/login" element={<LoginPage />} />
-          <Route
-            path="/protected"
-            element={
-              <RequireAuth>
-                <ProtectedPage />
-              </RequireAuth>
-            }
-          />
-          <Route
-            path="/detailed"
-            element={
-              <RequireAuth>
-                <ProtectedPageDetailed />
-              </RequireAuth>
-            }
-          />
-          <Route path="*" element={<NoMatch />} />
-        </Route>
-      </Routes>
-    </AuthProvider>
+        <Routes>
+          <Route element={<Layout />}>
+            <Route path="/" element={<PublicPage />} />
+            <Route path="/login" element={<LoginPage />} />
+            <Route
+              path="/protected"
+              element={
+                <RequireAuth>
+                  <ProtectedPage />
+                </RequireAuth>
+              }
+            />
+            <Route
+              path="/detailed"
+              element={
+                <RequireAuth>
+                  <ProtectedPageDetailed />
+                </RequireAuth>
+              }
+            />
+            <Route path="*" element={<NoMatch />} />
+          </Route>
+        </Routes>
+      </AuthProvider>
+    </Provider>
   );
 }
 
