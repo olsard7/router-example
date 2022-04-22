@@ -6,3 +6,4 @@ export { default as ProtectedPage } from "./ProtectedPage";
 export { default as PublicPage } from "./PublicPage";
 export { default as LoginPage } from "./LoginPage";
 export { default as Description } from "./Description";
+export { default as ProtectedPageDetailed } from "./ProtectedPageDetailed";

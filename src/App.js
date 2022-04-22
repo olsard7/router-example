@@ -3,7 +3,14 @@ import { Routes, Route, useLocation, Navigate } from "react-router-dom";
 import { useAuth } from "./useAuth";
 import Layout from "./Layout";
 import AuthProvider from "./AuthProvider";
-import { PublicPage, ProtectedPage, LoginPage, Description } from "./pages";
+import {
+  PublicPage,
+  ProtectedPage,
+  LoginPage,
+  Description,
+  NoMatch,
+  ProtectedPageDetailed,
+} from "./pages";
 import "./style.css";
 
 export default function App() {
@@ -23,6 +30,15 @@ export default function App() {
               </RequireAuth>
             }
           />
+          <Route
+            path="/detailed"
+            element={
+              <RequireAuth>
+                <ProtectedPageDetailed />
+              </RequireAuth>
+            }
+          />
+          <Route path="*" element={<NoMatch />} />
         </Route>
       </Routes>
     </AuthProvider>
