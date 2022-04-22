@@ -1,10 +1,21 @@
+import { SET_DATA } from "./actionTypes";
+
 const initialState = {
   titles: [],
 };
 
 function reducer(state = initialState, action) {
-  console.log("== action ==", action);
-  return state;
+  switch (action.type) {
+    case SET_DATA: {
+      return {
+        ...state,
+        titles: action.payload,
+      };
+    }
+    default: {
+      return state;
+    }
+  }
 }
 
 export default reducer;
